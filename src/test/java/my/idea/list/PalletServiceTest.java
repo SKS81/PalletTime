@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
-public class TimeServiceTest {
+public class PalletServiceTest {
 
     PalletTimeService service = new PalletTimeService();
 

@@ -1,10 +1,10 @@
 package my.idea.list;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class PalletServiceTest {
 
@@ -12,67 +12,70 @@ public class PalletServiceTest {
 
     @ParameterizedTest
     @CsvFileSource(files="src/test/resources/data.csv")
-    public void point_1_PlusAllTime_CSVFileTest(int expectedDay, int expectedHor, int expectedMin, int expectedSec, int hor1, int hor2, int min1, int min2, int sec1, int sec2) {
-        int actualSec = service.getRemSec(sec1, sec2);
-        Assertions.assertEquals(expectedSec, actualSec);
-        int actualMin = service.getRemMin(sec1, sec2, min1, min2);
-        Assertions.assertEquals(expectedMin, actualMin);
-        int actualHor = service.getRemHor(sec1, sec2, min1, min2, hor1, hor2);
-        Assertions.assertEquals(expectedHor, actualHor);
-        int actualDay = service.getRemDay(sec1, sec2, min1, min2, hor1, hor2);
-        Assertions.assertEquals(expectedDay, actualDay);
+    public void fullMin_1_Pallet_CSVFileTest(int expectedFullMin1Pallet, int hor1, int min1, int hor2, int min2) {
+        int actualFullMin1Pallet = service.givFullMin1Pallet(hor1, min1, hor2, min2);
+        Assertions.assertEquals(expectedFullMin1Pallet, actualFullMin1Pallet);
     }
 
     @ParameterizedTest
     @CsvSource({
-            "0,0,0,0,0,0,0,0,0",
-            "362720,15,55,33,47,21,16,7,3",
-            "362720,55,15,47,33,16,21,3,7",
+            "0,0",
+            "31,31",
+            "59,59",
+            "1,61",
+            "23,83",
+            "0,60",
+            "0,120",
+            "2,182",
     })
-    public void point_2_MinusAllTime_CSVTest(int expectedTime, int sec21, int sec22, int min21, int min22, int hor21, int hor22, int day21, int day22) {
-        int actualTime = service.getDifferenceSec(sec21, sec22, min21, min22, hor21, hor22, day21, day22);
-        Assertions.assertEquals(expectedTime, actualTime);
+    public void remMin_1_Pallet_CSVTest(int expectedRemMin1Pallet, int fullMin1Pallet) {
+        int actualRemMin1Pallet = service.givRemMin1Pallet(fullMin1Pallet);
+        Assertions.assertEquals(expectedRemMin1Pallet, actualRemMin1Pallet);
     }
 
-    @Test
-    public void point_3_2_ConvMinToSec_Test() {
-        int expectedSec = 600;
-        int actualSec = service.convMinToSec(10);
-        Assertions.assertEquals(expectedSec, actualSec);
+    @ParameterizedTest
+    @CsvSource({
+            "0,0",
+            "0,30",
+            "0,59",
+            "1,60",
+            "1,61",
+            "1,90",
+            "2,120",
+            "2,170",
+    })
+    public void remHor_1_Pallet_CSVTest(int expectedRemHor1Pallet, int fullMin1Pallet) {
+        int actualRemHor1Pallet = service.givRemHor1Pallet(fullMin1Pallet);
+        Assertions.assertEquals(expectedRemHor1Pallet, actualRemHor1Pallet);
     }
 
-    @Test
-    public void point_3_3_ConvHorToSec_Test() {
-        int expectedSec = 10800;
-        int actualSec = service.convHorToSec(3);
-        Assertions.assertEquals(expectedSec, actualSec);
-    }
+
+
+
+
+
+
 
     @Test
-    public void point_3_3_ConvHorToMin_Test() {
-        int expectedSec = 720;
-        int actualSec = service.convHorToMin(12);
-        Assertions.assertEquals(expectedSec, actualSec);
-    }
+    public void minEnd_Test() {
+        int expected0_minEnd = 0;
+        int actual0_minEnd = service.givMinEnd(0, 0);
+        Assertions.assertEquals(expected0_minEnd, actual0_minEnd);
 
-    @Test
-    public void point_3_4_ConvDayToSec_Test() {
-        int expectedSec = 86400;
-        int actualSec = service.convDayToSec(1);
-        Assertions.assertEquals(expectedSec, actualSec);
-    }
+        int expected1_minEnd = 25;
+        int actual1_minEnd = service.givMinEnd(0, 25);
+        Assertions.assertEquals(expected1_minEnd, actual1_minEnd);
 
-    @Test
-    public void point_3_4_ConvDayToMin_Test() {
-        int expectedSec = 2880;
-        int actualSec = service.convDayToMin(2);
-        Assertions.assertEquals(expectedSec, actualSec);
-    }
+        int expected2_minEnd = 60;
+        int actual2_minEnd = service.givMinEnd(1, 0);
+        Assertions.assertEquals(expected2_minEnd, actual2_minEnd);
 
-    @Test
-    public void point_3_4_ConvDayToHor_Test() {
-        int expectedSec = 168;
-        int actualSec = service.convDayToHor(7);
-        Assertions.assertEquals(expectedSec, actualSec);
+        int expected3_minEnd = 61;
+        int actual3_minEnd = service.givMinEnd(1, 1);
+        Assertions.assertEquals(expected3_minEnd, actual3_minEnd);
+
+        int expected4_minEnd = 248;
+        int actual4_minEnd = service.givMinEnd(4,8);
+        Assertions.assertEquals(expected4_minEnd, actual4_minEnd);
     }
 }

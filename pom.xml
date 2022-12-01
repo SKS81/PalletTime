@@ -90,8 +90,6 @@
                     <includeFilterFile>spotbugs-security-include.xml</includeFilterFile>
                     <excludeFilterFile>spotbugs-security-exclude.xml</excludeFilterFile>
 
-
-
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -101,8 +99,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
-
 
         </plugins>
     </build>

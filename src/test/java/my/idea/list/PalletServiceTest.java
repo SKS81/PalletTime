@@ -50,6 +50,51 @@ public class PalletServiceTest {
     }
 
     @Test
+    public void remMinParty_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givRemMinParty(1, 0, 0, 0, 0);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 4;
+        int actual_2 = service.givRemMinParty(3, 1, 0, 2, 0);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 58;
+        int actual_3 = service.givRemMinParty(15, 0,0, 0, 30);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
+
+    @Test
+    public void remHorParty_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givRemHorParty(1, 0, 0, 0, 0);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 5;
+        int actual_2 = service.givRemHorParty(5, 1, 0, 2, 0);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 3;
+        int actual_3 = service.givRemHorParty(50, 23,30, 0, 30);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
+
+    @Test
+    public void remDayParty_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givRemDayParty(15, 9, 45, 10, 16);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 0;
+        int actual_2 = service.givRemDayParty(16, 22, 50, 23, 45);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 3;
+        int actual_3 = service.givRemDayParty(30, 21,30, 23, 55);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
+
+    @Test
     public void minEnd_Test() {
         int expected_1 = 0;
         int actual_1 = service.givMinEnd(0, 0);
@@ -70,6 +115,82 @@ public class PalletServiceTest {
         int expected_5 = 248;
         int actual_5 = service.givMinEnd(4,8);
         Assertions.assertEquals(expected_5, actual_5);
+    }
+
+    @Test
+    public void remMinStart_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givRemMinStart(0);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 12;
+        int actual_2 = service.givRemMinStart(72);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 5;
+        int actual_3 = service.givRemMinStart(185);
+        Assertions.assertEquals(expected_3, actual_3);
+
+        int expected_4 = 24;
+        int actual_4 = service.givRemMinStart(24);
+        Assertions.assertEquals(expected_4, actual_4);
+    }
+
+    @Test
+    public void remHorStart_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givRemHorStart(59);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 1;
+        int actual_2 = service.givRemHorStart(61);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 5;
+        int actual_3 = service.givRemHorStart(300);
+        Assertions.assertEquals(expected_3, actual_3);
+
+        int expected_4 = 9;
+        int actual_4 = service.givRemHorStart(2000);
+        Assertions.assertEquals(expected_4, actual_4);
+    }
+
+    @Test
+    public void remMinEnd_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givRemMinEnd(0);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 1;
+        int actual_2 = service.givRemMinEnd(61);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 5;
+        int actual_3 = service.givRemMinEnd(125);
+        Assertions.assertEquals(expected_3, actual_3);
+
+        int expected_4 = 38;
+        int actual_4 = service.givRemMinEnd(38);
+        Assertions.assertEquals(expected_4, actual_4);
+    }
+
+    @Test
+    public void remHorEnd_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givRemHorEnd(35);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 1;
+        int actual_2 = service.givRemHorEnd(60);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 3;
+        int actual_3 = service.givRemHorEnd(200);
+        Assertions.assertEquals(expected_3, actual_3);
+
+        int expected_4 = 17;
+        int actual_4 = service.givRemHorEnd(2500);
+        Assertions.assertEquals(expected_4, actual_4);
     }
 
     @Test

@@ -58,8 +58,7 @@ public class PalletTime {
 			int numberPallet = 0;
 			int minStart;
 			int minEnd = service.givMinEnd(hor2, min2);
-			int i;
-			for (i = 0; i < count; i++) {
+			for (int i = 0; i < count; i++) {
 				numberPallet++;
 				if (numberPallet == 1) {
 					System.out.println("Паллет № " + numberPallet + " : начало в " + hor1 + " час., " + min1 + " мин." + " - окончание в " + hor2 + " час., " +  min2 + " мин.");
@@ -84,7 +83,7 @@ public class PalletTime {
 			}
 
 			System.out.println();
-			System.out.println("Требуется рассчёт ещё одной партии?");
+			System.out.println("Выполнить рассчёт ещё одной партии?");
 			System.out.println("1 - ДА, рассчитаем ещё");
 			System.out.println("2 - НЕТ, завершить программу");
 			int choice = console.nextInt();

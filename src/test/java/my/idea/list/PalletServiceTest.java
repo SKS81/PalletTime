@@ -49,33 +49,56 @@ public class PalletServiceTest {
         Assertions.assertEquals(expectedRemHor1Pallet, actualRemHor1Pallet);
     }
 
-
-
-
-
-
-
-
     @Test
     public void minEnd_Test() {
-        int expected0_minEnd = 0;
-        int actual0_minEnd = service.givMinEnd(0, 0);
-        Assertions.assertEquals(expected0_minEnd, actual0_minEnd);
+        int expected_1 = 0;
+        int actual_1 = service.givMinEnd(0, 0);
+        Assertions.assertEquals(expected_1, actual_1);
 
-        int expected1_minEnd = 25;
-        int actual1_minEnd = service.givMinEnd(0, 25);
-        Assertions.assertEquals(expected1_minEnd, actual1_minEnd);
+        int expected_2 = 25;
+        int actual_2 = service.givMinEnd(0, 25);
+        Assertions.assertEquals(expected_2, actual_2);
 
-        int expected2_minEnd = 60;
-        int actual2_minEnd = service.givMinEnd(1, 0);
-        Assertions.assertEquals(expected2_minEnd, actual2_minEnd);
+        int expected_3 = 60;
+        int actual_3 = service.givMinEnd(1, 0);
+        Assertions.assertEquals(expected_3, actual_3);
 
-        int expected3_minEnd = 61;
-        int actual3_minEnd = service.givMinEnd(1, 1);
-        Assertions.assertEquals(expected3_minEnd, actual3_minEnd);
+        int expected_4 = 61;
+        int actual_4 = service.givMinEnd(1, 1);
+        Assertions.assertEquals(expected_4, actual_4);
 
-        int expected4_minEnd = 248;
-        int actual4_minEnd = service.givMinEnd(4,8);
-        Assertions.assertEquals(expected4_minEnd, actual4_minEnd);
+        int expected_5 = 248;
+        int actual_5 = service.givMinEnd(4,8);
+        Assertions.assertEquals(expected_5, actual_5);
+    }
+
+    @Test
+    public void deviationMinParty_Test() {
+        int expected_1 = 48;
+        int actual_1 = service.givDeviationMinParty(16, 3);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 2;
+        int actual_2 = service.givDeviationMinParty(61, 2);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 20;
+        int actual_3 = service.givDeviationMinParty(50, 4);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
+
+    @Test
+    public void deviationHorParty_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givDeviationHorParty(16, 3);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 1;
+        int actual_2 = service.givDeviationHorParty(51, 2);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 3;
+        int actual_3 = service.givDeviationHorParty(54, 4);
+        Assertions.assertEquals(expected_3, actual_3);
     }
 }

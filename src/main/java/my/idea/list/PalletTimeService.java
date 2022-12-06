@@ -67,7 +67,11 @@ public class PalletTimeService {
         int remHorStart;
         int tempHorStart = minStart / 60;
         if (tempHorStart >= 24) {
-            remHorStart = tempHorStart - 24;
+            int fullMinStart = tempHorStart * 60;
+            int fullHorStart = fullMinStart / 60;
+            int remDayStart = fullHorStart / 24;
+            int horStart = remDayStart * 24;
+            remHorStart = fullHorStart - horStart;
             return remHorStart;
         } else {
             remHorStart = tempHorStart;
@@ -86,11 +90,29 @@ public class PalletTimeService {
         int remHorEnd;
         int tempHorEnd = minEnd / 60;
         if (tempHorEnd >= 24) {
-            remHorEnd = tempHorEnd - 24;
+            int fullMinEnd = tempHorEnd * 60;
+            int fullHorEnd = fullMinEnd / 60;
+            int remDayEnd = fullHorEnd / 24;
+            int horEnd = remDayEnd * 24;
+            remHorEnd = fullHorEnd - horEnd;
             return remHorEnd;
         } else {
             remHorEnd = tempHorEnd;
             return remHorEnd;
         }
+    }
+
+    public int givDeviationMinParty(int count, int deviationPallet) {
+        int fullDeviationMinParty = count * deviationPallet;
+        int fullDeviationHorParty = fullDeviationMinParty / 60;
+        int remDeviationMinParty = fullDeviationHorParty * 60;
+        int deviationMinParty = fullDeviationMinParty - remDeviationMinParty;
+        return deviationMinParty;
+    }
+
+    public int givDeviationHorParty(int count, int deviationPallet) {
+        int fullDeviationMinParty = count * deviationPallet;
+        int deviationHorParty = fullDeviationMinParty / 60;
+        return deviationHorParty;
     }
 }

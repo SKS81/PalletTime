@@ -1,10 +1,11 @@
 package my.idea.list;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class PalletTime {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		Scanner console = new Scanner(System.in);
 		PalletTimeService service = new PalletTimeService();
@@ -39,6 +40,12 @@ public class PalletTime {
 			int deviationMinParty = service.givDeviationMinParty(count, deviationPallet);
 			int deviationHorParty = service.givDeviationHorParty(count, deviationPallet);
 
+			for (int b = 0; b < 125;) {
+				System.out.println("Рассчёт... " + b + "% завершено");
+				b = b + 25;
+				TimeUnit.SECONDS.sleep(1);
+			}
+
 			System.out.println();
 			System.out.println("Ориентировочное время фасовки одного паллета составляет:");
 			if (remHor1Pallet == 0) {
@@ -46,13 +53,15 @@ public class PalletTime {
 			} else {
 				System.out.println(remHor1Pallet + " час. и " + remMin1Pallet + " мин.");
 			}
+			TimeUnit.SECONDS.sleep(1);
 			System.out.println();
 			System.out.println("Ориентировочное время фасовки всей партии составляет:");
 			if (remDayParty == 0) {
 				System.out.println(remHorParty + " час. и " + remMinParty + " мин.");
 			} else {
-				System.out.println(remDayParty + " сут., " + remHorParty + " час. и " + remMinParty + " мин.");
+				System.out.println(remDayParty + " сут. ( это " + remDayParty * 2 + " смен ), " + remHorParty + " час. и " + remMinParty + " мин.");
 			}
+			TimeUnit.SECONDS.sleep(1);
 			System.out.println();
 			System.out.println("Ориентировочное время фасовки партии по-паллетно:");
 			int numberPallet = 0;
@@ -64,7 +73,7 @@ public class PalletTime {
 					System.out.println("Паллет № " + numberPallet + " : начало в " + hor1 + " час., " + min1 + " мин." + " - окончание в " + hor2 + " час., " +  min2 + " мин.");
 				} else {
 					minStart = (minEnd + 2);
-					minEnd = minStart + fullMin1Pallet;
+					minEnd = (minStart + fullMin1Pallet);
 					int remMinStart = service.givRemMinStart(minStart);
 					int remHorStart = service.givRemHorStart(minStart);
 					int remMinEnd = service.givRemMinEnd(minEnd);
@@ -72,6 +81,7 @@ public class PalletTime {
 					System.out.println("Паллет № " + numberPallet + " : начало в " + remHorStart + " час., " + remMinStart + " мин." + " - окончание в " + remHorEnd + " час., " + remMinEnd + " мин.");
 				}
 			}
+			TimeUnit.SECONDS.sleep(1);
 			System.out.println();
 			System.out.println("Не забудьте взять тестовый образец!");
 			System.out.println("Время рассчитывается универсально для всех продуктов.");
@@ -82,6 +92,7 @@ public class PalletTime {
 				System.out.println("Общая погрешность фасовки всей партии составляет до (+/-) " + deviationHorParty + " час. и " + deviationMinParty + " мин.");
 			}
 
+			TimeUnit.SECONDS.sleep(3);
 			System.out.println();
 			System.out.println("Выполнить рассчёт ещё одной партии?");
 			System.out.println("1 - ДА, рассчитаем ещё");

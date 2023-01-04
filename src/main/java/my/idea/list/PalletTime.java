@@ -16,6 +16,12 @@ public class PalletTime {
 		System.out.println("Расчёт затрачиваемого времени на фасовку партии.");
 
 		for (int a = 0; a < countRunner; a++) mainMenu: {
+
+			System.out.println();
+			System.out.println("Выберите фасовочную тару:");
+			System.out.println("1 - КОРОБКИ");
+			System.out.println("2 - ВЁДРА");
+			int tara = console.nextInt();
 			System.out.println();
 			System.out.println("Укажите планируемое колличество паллет в партии");
 			int count = console.nextInt();
@@ -90,6 +96,21 @@ public class PalletTime {
 				System.out.println("Общая погрешность фасовки всей партии составляет до (+/-) " + deviationMinParty + " мин.");
 			} else {
 				System.out.println("Общая погрешность фасовки всей партии составляет до (+/-) " + deviationHorParty + " час. и " + deviationMinParty + " мин.");
+			}
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println();
+			System.out.println("Ориентировочный расход материалов:");
+			System.out.println(count + " поддон(а/ов)");
+			if ( tara == 1 ) {
+				int gofra = service.givGofra(tara, count);
+				int packing = service.givPacking(tara, count);
+				System.out.println(gofra + " гофролист(а/ов)");
+				System.out.println("По " + packing + " коробке(и/ок) и пакету(а/ов)");
+			} if ( tara == 2 ) {
+				int gofra = service.givGofra(tara, count);
+				int packing = service.givPacking(tara, count);
+				System.out.println(gofra + " гофролист(а/ов)");
+				System.out.println("По " + packing + " ведру(а/ер) и крышке(ек)");
 			}
 
 			TimeUnit.SECONDS.sleep(3);

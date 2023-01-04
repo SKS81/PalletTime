@@ -11,28 +11,24 @@ public class PalletTimeService {
         } else {
             fullMin2 = fullMin2Temp + 1440;
         }
-        int fullMin1Pallet = fullMin2 - fullMin1;
-        return fullMin1Pallet;
+        return fullMin2 - fullMin1;
     }
 
     public int givRemMin1Pallet(int fullMin1Pallet) {
         int dopHor1Pallet = fullMin1Pallet / 60;
         int tempMin1Pallet = dopHor1Pallet * 60;
-        int remMin1Pallet = fullMin1Pallet - tempMin1Pallet;
-        return remMin1Pallet;
+        return fullMin1Pallet - tempMin1Pallet;
     }
 
     public int givRemHor1Pallet(int fullMin1Pallet) {
-        int remHor1Pallet = fullMin1Pallet / 60;
-        return remHor1Pallet;
+        return fullMin1Pallet / 60;
     }
 
     public int givRemMinParty(int count, int hor1, int min1, int hor2, int min2) {
         int fullMinParty = givFullMin1Pallet(hor1, min1, hor2, min2) * count + ((count - 1) * 2);
         int dopHorParty = fullMinParty / 60;
         int tempMinParty = dopHorParty * 60;
-        int remMinParty = fullMinParty - tempMinParty;
-        return remMinParty;
+        return fullMinParty - tempMinParty;
     }
 
     public int givRemHorParty(int count, int hor1, int min1, int hor2, int min2) {
@@ -40,27 +36,23 @@ public class PalletTimeService {
         int fullHorParty = fullMinParty / 60;
         int remDayParty = fullHorParty / 24;
         int tempHorParty = remDayParty * 24;
-        int remHorParty = fullHorParty - tempHorParty;
-        return remHorParty;
+        return fullHorParty - tempHorParty;
     }
 
     public int givRemDayParty(int count, int hor1, int min1, int hor2, int min2) {
         int fullMinParty = givFullMin1Pallet(hor1, min1, hor2, min2) * count + ((count - 1) * 2);
         int fullHopParty = fullMinParty / 60;
-        int remDayParty = fullHopParty / 24;
-        return remDayParty;
+        return fullHopParty / 24;
     }
 
     public int givMinEnd(int hor2, int min2) {
-        int minEnd = (hor2 * 60) + min2;
-        return minEnd;
+        return (hor2 * 60) + min2;
     }
 
     public int givRemMinStart(int minStart) {
         int dopHorStart = minStart / 60;
         int tempMinStart = dopHorStart * 60;
-        int remMinStart = minStart - tempMinStart;
-        return remMinStart;
+        return minStart - tempMinStart;
     }
 
     public int givRemHorStart(int minStart) {
@@ -72,18 +64,16 @@ public class PalletTimeService {
             int remDayStart = fullHorStart / 24;
             int horStart = remDayStart * 24;
             remHorStart = fullHorStart - horStart;
-            return remHorStart;
         } else {
             remHorStart = tempHorStart;
-            return remHorStart;
         }
+        return remHorStart;
     }
 
     public int givRemMinEnd(int minEnd) {
         int dopHor = minEnd / 60;
         int tempMin = dopHor * 60;
-        int remMinEnd = minEnd - tempMin;
-        return remMinEnd;
+        return minEnd - tempMin;
     }
 
     public int givRemHorEnd(int minEnd) {
@@ -95,24 +85,35 @@ public class PalletTimeService {
             int remDayEnd = fullHorEnd / 24;
             int horEnd = remDayEnd * 24;
             remHorEnd = fullHorEnd - horEnd;
-            return remHorEnd;
         } else {
             remHorEnd = tempHorEnd;
-            return remHorEnd;
         }
+        return remHorEnd;
     }
 
     public int givDeviationMinParty(int count, int deviationPallet) {
         int fullDeviationMinParty = count * deviationPallet;
         int fullDeviationHorParty = fullDeviationMinParty / 60;
         int remDeviationMinParty = fullDeviationHorParty * 60;
-        int deviationMinParty = fullDeviationMinParty - remDeviationMinParty;
-        return deviationMinParty;
+        return fullDeviationMinParty - remDeviationMinParty;
     }
 
     public int givDeviationHorParty(int count, int deviationPallet) {
         int fullDeviationMinParty = count * deviationPallet;
-        int deviationHorParty = fullDeviationMinParty / 60;
-        return deviationHorParty;
+        return fullDeviationMinParty / 60;
+    }
+
+    public int givGofra(int tara, int count) {
+        int gofra = 0;
+        if ( tara == 1 ) gofra = count * 4;
+        if ( tara == 2 ) gofra = count * 2;
+        return gofra;
+    }
+
+    public int givPacking(int tara, int count) {
+        int packing = 0;
+        if ( tara == 1 ) packing = count * 36;
+        if ( tara == 2 ) packing = count * 44;
+        return packing;
     }
 }

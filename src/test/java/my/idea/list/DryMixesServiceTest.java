@@ -60,5 +60,23 @@ public class DryMixesServiceTest {
         Assertions.assertEquals(expected_3, actual_3);
     }
 
+    @Test
+    public void minStart_Test() {
+        int expected_1 = 1415;
+        int actual_1 = service.givMinStart(23, 35);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 10;
+        int actual_2 = service.givMinStart(0, 10);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 687;
+        int actual_3 = service.givMinStart(11, 27);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
+
+
+
+
 
 }

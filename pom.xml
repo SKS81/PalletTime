@@ -3,17 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>my.idea.list</groupId>
     <artifactId>PalletTime</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -22,10 +19,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -34,12 +29,10 @@
                     <failIfNoTests>true</failIfNoTests>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
-
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
@@ -48,7 +41,6 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
-
                     <execution>
                         <id>report</id>
                         <phase>verify</phase>
@@ -56,16 +48,13 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
-
                     <execution>
                         <id>check</id>
                         <goals>
                             <goal>check</goal>
                         </goals>
                     </execution>
-
                 </executions>
-
                 <configuration>
                     <rules>
                         <rule>
@@ -79,9 +68,7 @@
                         </rule>
                     </rules>
                 </configuration>
-
             </plugin>
-
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
@@ -89,7 +76,6 @@
                 <configuration>
                     <includeFilterFile>spotbugs-security-include.xml</includeFilterFile>
                     <excludeFilterFile>spotbugs-security-exclude.xml</excludeFilterFile>
-
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -99,8 +85,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
         </plugins>
     </build>
-
 </project>

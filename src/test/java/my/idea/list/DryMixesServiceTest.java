@@ -75,8 +75,63 @@ public class DryMixesServiceTest {
         Assertions.assertEquals(expected_3, actual_3);
     }
 
+    @Test
+    public void KGOneMin_Test() {
+        String expected_1 = String.format("%.2f", 5.00);
+        String actual_1 = service.givKGOneMin(50, 10);
+        Assertions.assertEquals(expected_1, actual_1);
 
+        String expected_2 = String.format("%.2f", 10.29);
+        String actual_2 = service.givKGOneMin(72, 7);
+        Assertions.assertEquals(expected_2, actual_2);
 
+        String expected_3 = String.format("%.2f", 0.25);
+        String actual_3 = service.givKGOneMin(15, 61);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
 
+    @Test
+    public void TimeOneKG_Test() {
+        float expected_1 = 258.46155F;
+        float actual_1 = service.givTimeOneKG(13, 56);
+        Assertions.assertEquals(expected_1, actual_1);
 
+        float expected_2 = 20.0F;
+        float actual_2 = service.givTimeOneKG(6, 2);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        float expected_3 = 38.181816F;
+        float actual_3 = service.givTimeOneKG(11, 7);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
+
+    @Test
+    public void RemHorTime_Test() {
+        int expected_1 = 0;
+        int actual_1 = service.givRemHorTime(59);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 1;
+        int actual_2 = service.givRemHorTime(74);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 3;
+        int actual_3 = service.givRemHorTime(180);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
+
+    @Test
+    public void RemMinTime_Test() {
+        int expected_1 = 30;
+        int actual_1 = service.givRemMinTime(210);
+        Assertions.assertEquals(expected_1, actual_1);
+
+        int expected_2 = 0;
+        int actual_2 = service.givRemMinTime(60);
+        Assertions.assertEquals(expected_2, actual_2);
+
+        int expected_3 = 27;
+        int actual_3 = service.givRemMinTime(27);
+        Assertions.assertEquals(expected_3, actual_3);
+    }
 }

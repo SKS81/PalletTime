@@ -1,5 +1,6 @@
 package my.idea.list;
 
+import my.idea.list.service.DryMixesService;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -7,15 +8,15 @@ public class DryMixes {
     public static void main(String[] args) throws InterruptedException {
 
         Scanner console = new Scanner(System.in);
-        DryMixesService service = new DryMixesService();
+        DryMixesService servMix = new DryMixesService();
         int countRunner = 50;
 
         System.out.println();
         System.out.println("Расчёт затрачиваемого времени на фасовку партии.");
         int deviationPallet = 3;
-        String kremiKo = "КРЕМИКО";
-        String kremiGold = "КРЕМИГОЛД";
-        String kremiLite = "КРЕМИЛАЙТ";
+        String product_1 = "КРЕМИКО";
+        String product_2 = "КРЕМИГОЛД";
+        String product_3 = "КРЕМИЛАЙТ";
         System.out.println();
 
         for (int a = 0; a < countRunner; a++) mainMenu: {
@@ -29,9 +30,9 @@ public class DryMixes {
 
             System.out.println();
             System.out.println("Выберите продукт:");
-            System.out.println("1 - " + kremiKo);
-            System.out.println("2 - " + kremiGold);
-            System.out.println("3 - " + kremiLite);
+            System.out.println("1 - " + product_1);
+            System.out.println("2 - " + product_2);
+            System.out.println("3 - " + product_3);
             int product = console.nextInt();
             System.out.println();
 
@@ -44,16 +45,16 @@ public class DryMixes {
                 System.out.println("Укажите минуты:");
                 int min1 = console.nextInt();
 
-                String minKG = service.givKGOneMin(quantity, time);
-                int kgMin = (int) service.givTimeOneKG(quantity, time);
-                int remMinTime = service.givRemMinTime(time);
-                int remHorTime = service.givRemHorTime(time);
-                int remMinEnd = service.givRemMinEnd(hor1, min1, time, deviationPallet);
-                int remHorEnd = service.givRemHorEnd(hor1, min1, time, deviationPallet);
+                String minKG = servMix.givKGOneMin(quantity, time);
+                int kgMin = (int) servMix.givTimeOneKG(quantity, time);
+                int remMinTime = servMix.givRemMinTime(time);
+                int remHorTime = servMix.givRemHorTime(time);
+                int remMinEnd = servMix.givRemMinEnd(hor1, min1, time, deviationPallet);
+                int remHorEnd = servMix.givRemHorEnd(hor1, min1, time, deviationPallet);
 
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println();
-                System.out.println("Ориентировочное время фасовки партии " + kremiKo + " составляет:");
+                System.out.println("Ориентировочное время фасовки партии " + product_1 + " составляет:");
                 System.out.println(remHorTime + " час. и " + remMinTime + " мин.");
 
                 TimeUnit.SECONDS.sleep(1);
@@ -76,16 +77,16 @@ public class DryMixes {
                 System.out.println("Укажите минуты:");
                 int min1 = console.nextInt();
 
-                String minKG = service.givKGOneMin(quantity, time);
-                int kgMin = (int) service.givTimeOneKG(quantity, time);
-                int remMinTime = service.givRemMinTime(time);
-                int remHorTime = service.givRemHorTime(time);
-                int remMinEnd = service.givRemMinEnd(hor1, min1, time, deviationPallet);
-                int remHorEnd = service.givRemHorEnd(hor1, min1, time, deviationPallet);
+                String minKG = servMix.givKGOneMin(quantity, time);
+                int kgMin = (int) servMix.givTimeOneKG(quantity, time);
+                int remMinTime = servMix.givRemMinTime(time);
+                int remHorTime = servMix.givRemHorTime(time);
+                int remMinEnd = servMix.givRemMinEnd(hor1, min1, time, deviationPallet);
+                int remHorEnd = servMix.givRemHorEnd(hor1, min1, time, deviationPallet);
 
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println();
-                System.out.println("Ориентировочное время фасовки партии " + kremiGold + " составляет:");
+                System.out.println("Ориентировочное время фасовки партии " + product_2 + " составляет:");
                 System.out.println(remHorTime + " час. и " + remMinTime + " мин.");
 
                 TimeUnit.SECONDS.sleep(1);

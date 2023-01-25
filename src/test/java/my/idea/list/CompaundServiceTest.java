@@ -1,5 +1,6 @@
 package my.idea.list;
 
+import my.idea.list.service.CompaundService;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -7,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PalletTimeServiceTest {
+public class CompaundServiceTest {
 
-    PalletTimeService service = new PalletTimeService();
+    CompaundService service = new CompaundService();
 
     @ParameterizedTest
     @CsvFileSource(files="src/test/resources/data.csv")

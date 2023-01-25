@@ -1,6 +1,6 @@
-package my.idea.list;
+package my.idea.list.service;
 
-public class PalletTimeService {
+public class CompaundService {
 
     public int givFullMin1Pallet(int hor1, int min1, int hor2, int min2) {
         int fullMin1 = (hor1 * 60) + min1;

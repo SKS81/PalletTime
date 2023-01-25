@@ -1,3 +1,5 @@
+## Status [![Build status](https://ci.appveyor.com/api/projects/status/cvy67u3nt5u8rc5h/branch/main?svg=true)](https://ci.appveyor.com/project/SKS81/pallettime/branch/main)
+***
 # АО "ПУРАТОС"
 ***
 # Выдержка из ТЗ
